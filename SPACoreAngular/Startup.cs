@@ -38,14 +38,14 @@ namespace SPACoreAngular
             });
             services.AddScoped(typeof(IDataRepository<>), typeof(DataRepository<>));
             services.AddControllersWithViews();
-            
-           /* // In production, the Angular files will be served from this directory
+
+            // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
-            });*/
+            });
 
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,10 +64,10 @@ namespace SPACoreAngular
             app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            /*  if (!env.IsDevelopment())
-              {
-                  app.UseSpaStaticFiles();
-              }*/
+            if (!env.IsDevelopment())
+            {
+                app.UseSpaStaticFiles();
+            }
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -76,14 +76,14 @@ namespace SPACoreAngular
             });
             /*app.UseRouting();*/
 
-          /*  app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
-            });
-*/
-            /*app.UseSpa(spa =>
+            /*  app.UseEndpoints(endpoints =>
+              {
+                  endpoints.MapControllerRoute(
+                      name: "default",
+                      pattern: "{controller}/{action=Index}/{id?}");
+              });
+  */
+            app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
@@ -94,7 +94,7 @@ namespace SPACoreAngular
                 {
                     spa.UseAngularCliServer(npmScript: "start");
                 }
-            });*/
+            });
         }
     }
 }

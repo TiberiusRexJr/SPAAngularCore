@@ -1,1 +1,19 @@
-<p>view-all-legos works!</p>
+<h1>Legos</h1>
+
+<p **ngIf="!(allLegos$ | async)"><em>loading...</em></p>
+<p>
+    <a [[routerLink]="['/api/Legoes/add']" class="btn btn-primary float-right mb-3">New Lego</a>
+</p>
+<table class="table table=sm table-hower" *ngIf="(allLegos$ | async)?.length>0">
+    <thead>
+        <tr><th>#</th><th>Title</th><th>Creator</th><th></th></tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let lego of (allLegos$ | async)">
+            <td>{{lego.Id}}</td>
+            <td><a [routerLink]="['../../../../SPACoreAgnular/Controlers/api/Legoes/', lego.serialNumber]">{{lego.serialNumber}}</a></td>
+            <td><a [routerLink]="['/api/Legoes/edit/', lego.serialNumber]" class="btn btn-primary btn-sm float-right">Edit</a> </td>
+            <td><a [routerLink]="" (click)="delete(lego.serialNumber)" class="btn btn-danger btn-sm float-right">Delete</a></td>
+        </tr>
+    </tbody>
+</table>

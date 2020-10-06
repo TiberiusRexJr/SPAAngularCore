@@ -23,7 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LegoAngularService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
